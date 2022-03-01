@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Opskrifter</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <link rel="stylesheet" href="style.css" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <h1 class="header__title">Opskrifter</h1>
+    </div>
+  </header>
+
+  <!-- MAIN SECTION -->
+  <main>
+    <div class="container">
+      <div>
+        <input id="opskrift_title" class="submission-line__input" type="text" placeholder="Opskriftnavn" />
+        <input id="opskrift_count" class="submission-line__input" type="number" placeholder="Antal personer/potioner" />
+        <button class="submission-line__btn save">Save</button>
+      </div>
+      <hr>
+
+      <!--  Input and "add" button  -->
+      <input id="add_ingredient" class="submission-line__input" type="text" placeholder="Ingredient" />
+      <input id="add_amount" class="submission-line__input" type="number" placeholder="Amount" />
+      <input id="add_type" class="submission-line__input" type="text" placeholder="Type" />
+      <button class="submission-line__btn add">Add</button>
+      <!--  List, list items, and list item buttons  -->
+      <ul class="list">
+        <li class="list__item">
+          <div style="float: left; width: 50%">
+            <a class="list__delete-btn">X</a>
+            <span class="ingredient">Milk</span>
+          </div>
+          <div style="float: right; width: 50%">
+            <a class="list__check-btn material-icons md-dark">edit</a>
+            <div class="right-side">
+              <span class="amount">2</span>
+              <span class="type">gram</span>
+            </div>
+          </div>
+        </li>
+        <li class="list__item">
+          <div style="float: left; width: 50%">
+            <a class="list__delete-btn">X</a>
+            <span class="ingredient">Eggs</span>
+          </div>
+          <div style="float: right; width: 50%">
+            <a class="list__check-btn material-icons md-dark">edit</a>
+            <div class="right-side">
+              <span class="amount">5</span>
+              <span class="type">styk</span>
+            </div>
+          </div>
+        </li>
+        <li class="list__item">
+          <div style="float: left; width: 50%">
+            <a class="list__delete-btn">X</a>
+            <span class="ingredient">Bread</span>
+          </div>
+          <div style="float: right; width: 50%">
+            <a class="list__check-btn material-icons md-dark">edit</a>
+            <div class="right-side">
+              <span class="amount">1</span>
+              <span class="type">gram</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
+
+<div id="template" style="display: none">
+  <li class="list__item">
+    <div style="float: left; width: 50%">
+      <a class="list__delete-btn">X</a>
+      <span class="ingredient">Milk</span>
+    </div>
+    <div style="float: right; width: 50%">
+      <a class="list__check-btn material-icons md-dark">edit</a>
+      <div class="right-side">
+        <span class="amount">2</span>
+        <span class="type">gram</span>
+      </div>
+    </div>
+  </li>
+</div>
+
+</html>
