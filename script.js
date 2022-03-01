@@ -72,3 +72,36 @@ $(document).ready(function(){
   });
 
 });
+
+
+function save() {
+  var opskrift = {
+    opskrift: $('#opskrift_title').val(),
+    count: $('#opskrift_count').val(),
+    ingridients: [],
+  };
+
+  $(".list li").each(function( index ) {
+    var $ingredient = $(this).find('.ingredient').text();
+    var $amount = $(this).find('.amount').text();
+    var $type = $(this).find('.type').text();
+
+    console.log($ingredient);
+    console.log($amount);
+    console.log($type);
+
+    opskrift.ingridients.push({
+      ingredient: $ingredient,
+      amount: $amount,
+      type: $type
+    });
+    // console.log( index + ": " + $( this ).text() );
+  });
+
+
+  var encoded = btoa(JSON.stringify(opskrift))
+
+  localStorage.setItem('myKey', JSON.stringify(opskrift));
+
+
+}
