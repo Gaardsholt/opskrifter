@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+  load();
+
 // ADDING A NEW ITEM TO THE LIST
 
   // Define the callback function
@@ -24,6 +26,14 @@ $(document).ready(function(){
       $('.submission-line__input').val("");
     }
   };
+
+  // Save
+  $('.submission-line__btn.save').on('click', function(event){
+    // (prevents form submit button unwanted default action)
+    event.preventDefault();
+    // run the callback function
+    save();
+  });
 
   // Add a new item to the list by clicking "Add" button
   $('.submission-line__btn.add').on('click', function(event){
@@ -74,9 +84,8 @@ $(document).ready(function(){
 });
 
 
-function save() {
+function save() {  
   var opskrift = {
-    opskrift: $('#opskrift_title').val(),
     count: $('#opskrift_count').val(),
     ingridients: [],
   };
@@ -85,10 +94,6 @@ function save() {
     var $ingredient = $(this).find('.ingredient').text();
     var $amount = $(this).find('.amount').text();
     var $type = $(this).find('.type').text();
-
-    console.log($ingredient);
-    console.log($amount);
-    console.log($type);
 
     opskrift.ingridients.push({
       ingredient: $ingredient,
@@ -99,9 +104,31 @@ function save() {
   });
 
 
-  var encoded = btoa(JSON.stringify(opskrift))
+  var alleOpskrifter = hentOpskrifter();
+  alleOpskrifter[$('#opskrift_title').val()] = opskrift;
 
-  localStorage.setItem('myKey', JSON.stringify(opskrift));
+  localStorage.setItem('opskrifter', JSON.stringify(alleOpskrifter));
 
+}
 
+function hentOpskrifter() {
+  return JSON.parse(localStorage.getItem("opskrifter")) ?? {};
+}
+
+function load() {
+  var alleOpskrifter = hentOpskrifter();
+  if (Object.keys(alleOpskrifter).length > 0) {
+    $('#opskrift_list').show();
+    $('#opskrift_add').hide();
+  }else {
+    $('#opskrift_list').hide();
+    $('#opskrift_add').show();
+  }
+
+  var opskriftList = $('#opskrift_list');
+  
+  for (var opskrift in alleOpskrifter) {
+    $('#opskrift_list').append('<div class="box box1"><h1>'+opskrift+'</h1></div>');
+  }
+  
 }

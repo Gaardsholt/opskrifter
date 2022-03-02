@@ -109,14 +109,14 @@ main {
 .list__delete-btn {
   cursor: pointer;
   float: left;
-  margin: -5px;
+  margin-left: -5px;
   padding: 5px 9px;
 }
 
 .list__check-btn {
   cursor: pointer;
   float: right;
-  /* margin: -5px; */
+  margin: -5px;
   padding: 4px 8px;
 }
 
@@ -129,5 +129,47 @@ main {
 .right-side {
   float: right;
   margin-right: 1em;
+  text-overflow: clip;
+  overflow-x: clip;
+  max-width: 50%;
+  text-overflow: clip;
 }
 
+
+
+
+
+
+
+
+.flex-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.box{
+  flex: 0 0 calc(100% - 10px);
+  margin: 5px;
+  background: #E9D2FF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box:after{
+  content: '';
+  display: block;
+  padding-bottom: 100%;
+}
+
+.box2{background: #AC71D0;}
+.box3{background: #38A899;}
+.box4{background: #A6D98C;}
+.box5{background: #bada55;}
+
+
+@media only screen and (min-width: 992px) {
+  .box{
+    flex: 0 0 calc(25% - 10px);
+  }
+}
