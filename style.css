@@ -135,6 +135,16 @@ main {
   text-overflow: clip;
 }
 
+.view-mode .submission-line__btn.save,
+.view-mode .list__delete-btn,
+.view-mode .list__check-btn,
+.view-mode #add_ingredient,
+.view-mode #add_amount,
+.view-mode #add_type,
+.view-mode .submission-line__btn.add {
+  display: none;
+}
+
 
 
 
@@ -161,12 +171,6 @@ main {
   display: block;
   padding-bottom: 100%;
 }
-
-.box2{background: #AC71D0;}
-.box3{background: #38A899;}
-.box4{background: #A6D98C;}
-.box5{background: #bada55;}
-
 
 @media only screen and (min-width: 992px) {
   .box{

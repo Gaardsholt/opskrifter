@@ -124,11 +124,31 @@ function load() {
     $('#opskrift_list').hide();
     $('#opskrift_add').show();
   }
-
-  var opskriftList = $('#opskrift_list');
   
   for (var opskrift in alleOpskrifter) {
-    $('#opskrift_list').append('<div class="box box1"><h1>'+opskrift+'</h1></div>');
+    const randomColor = Math.floor(Math.random()*16777215).toString(16);
+    $('#opskrift_list').append('<div onclick="viewOpskrift(\'' +opskrift+ '\')" class="box" style="background-color:#' +randomColor+ ';")><h1>'+opskrift+'</h1></div>');
   }
   
 }
+
+function viewOpskrift(opskrift) {
+  $('main').children().hide();
+  $('#opskrift_title').prop("disabled", "disabled");
+
+  $('#opskrift_add').addClass("view-mode").show();
+
+  var opskrifter = hentOpskrifter();
+  var leOpskrift = opskrifter[opskrift];
+  
+  $("#opskrift_title").val(opskrift);
+  $("#opskrift_count").val(leOpskrift.count);
+
+  $('#opskrift_count').on('change keyup', function() {
+    console.log('button2');
+  });
+
+  
+}
+
+// amount / count * personer
